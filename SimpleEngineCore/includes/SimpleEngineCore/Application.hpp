@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 namespace SimpleEngine {
 
     class Application
@@ -17,6 +19,8 @@ namespace SimpleEngine {
 
         virtual void on_update() {}
 
+    private:
+        std::unique_ptr<class Window> m_pWindow;
     };
 
 }
