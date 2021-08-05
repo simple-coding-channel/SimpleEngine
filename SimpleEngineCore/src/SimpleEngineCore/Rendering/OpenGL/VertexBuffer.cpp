@@ -31,17 +31,17 @@ namespace SimpleEngine {
         glDeleteBuffers(1, &m_id);
     }
 
-    VertexBuffer& VertexBuffer::operator=(VertexBuffer&& vertexBuffer) noexcept
+    VertexBuffer& VertexBuffer::operator=(VertexBuffer&& vertex_buffer) noexcept
     {
-        m_id = vertexBuffer.m_id;
-        vertexBuffer.m_id = 0;
+        m_id = vertex_buffer.m_id;
+        vertex_buffer.m_id = 0;
         return *this;
     }
 
-    VertexBuffer::VertexBuffer(VertexBuffer&& vertexBuffer) noexcept
+    VertexBuffer::VertexBuffer(VertexBuffer&& vertex_buffer) noexcept
     {
-        m_id = vertexBuffer.m_id;
-        vertexBuffer.m_id = 0;
+        m_id = vertex_buffer.m_id;
+        vertex_buffer.m_id = 0;
     }
 
     void VertexBuffer::bind() const

@@ -16,11 +16,11 @@ namespace SimpleEngine {
 
         void bind() const;
         static void unbind();
-        bool isCompiled() const { return m_isCompiled; }
+        bool isCompiled() const { return m_is_compiled; }
 
     private:
-        bool m_isCompiled = false;
         unsigned int m_id = 0;
+        bool m_is_compiled = false;
     };
 
 }
