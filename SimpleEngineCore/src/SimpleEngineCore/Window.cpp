@@ -12,6 +12,8 @@
 #include <imgui/backends/imgui_impl_opengl3.h>
 #include <imgui/backends/imgui_impl_glfw.h>
 
+#include <glm/mat3x3.hpp>
+
 namespace SimpleEngine {
 
     static bool s_GLFW_initialized = false;
@@ -162,6 +164,26 @@ namespace SimpleEngine {
 
         p_vao->add_vertex_buffer(*p_positions_colors_vbo);
         p_vao->set_index_buffer(*p_index_buffer);
+
+
+        glm::mat3 mat_1(4, 0, 0, 2, 8, 1, 0, 1, 0);
+        glm::mat3 mat_2(4, 2, 9, 2, 0, 4, 1, 4, 2);
+
+        glm::mat3 result_mat = mat_1 * mat_2;
+
+        LOG_INFO("");
+        LOG_INFO("|{0:3} {1:3} {2:3}|", result_mat[0][0], result_mat[1][0], result_mat[2][0]);
+        LOG_INFO("|{0:3} {1:3} {2:3}|", result_mat[0][1], result_mat[1][1], result_mat[2][1]);
+        LOG_INFO("|{0:3} {1:3} {2:3}|", result_mat[0][2], result_mat[1][2], result_mat[2][2]);
+        LOG_INFO("");
+
+        glm::vec4 vec(1, 2, 3, 4);
+        glm::mat4 mat_identity(1);
+
+        glm::vec4 result_vec = mat_identity * vec;
+
+        LOG_INFO("({0} {1} {2} {3})", result_vec.x, result_vec.y, result_vec.z, result_vec.w);
+
         return 0;
     }
 
