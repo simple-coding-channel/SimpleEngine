@@ -53,6 +53,34 @@ namespace SimpleEngine {
 
         glfwSetWindowUserPointer(m_pWindow, &m_data);
 
+        glfwSetKeyCallback(m_pWindow,
+            [](GLFWwindow* pWindow, int key, int scancode, int action, int mods)
+            {
+                WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(pWindow));
+                switch (action)
+                {
+                    case GLFW_PRESS:
+                    {
+                        EventKeyPressed event(static_cast<KeyCode>(key), false);
+                        data.eventCallbackFn(event);
+                        break;
+                    }
+                    case GLFW_RELEASE:
+                    {
+                        EventKeyReleased event(static_cast<KeyCode>(key));
+                        data.eventCallbackFn(event);
+                        break;
+                    }
+                    case GLFW_REPEAT:
+                    {
+                        EventKeyPressed event(static_cast<KeyCode>(key), true);
+                        data.eventCallbackFn(event);
+                        break;
+                    }
+                }
+            }
+        );
+
         glfwSetWindowSizeCallback(m_pWindow, 
             [](GLFWwindow* pWindow, int width, int height)
             {
