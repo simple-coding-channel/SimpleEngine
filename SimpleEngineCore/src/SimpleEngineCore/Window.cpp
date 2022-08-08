@@ -81,6 +81,31 @@ namespace SimpleEngine {
             }
         );
 
+        glfwSetMouseButtonCallback(m_pWindow,
+            [](GLFWwindow* pWindow, int button, int action, int mods)
+            {
+                WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(pWindow));
+                double x_pos;
+                double y_pos;
+                glfwGetCursorPos(pWindow, &x_pos, &y_pos);
+                switch (action)
+                {
+                    case GLFW_PRESS:
+                    {
+                        EventMouseButtonPressed event(static_cast<MouseButton>(button), x_pos, y_pos);
+                        data.eventCallbackFn(event);
+                        break;
+                    }
+                    case GLFW_RELEASE:
+                    {
+                        EventMouseButtonReleased event(static_cast<MouseButton>(button), x_pos, y_pos);
+                        data.eventCallbackFn(event);
+                        break;
+                    }
+                }
+            }
+        );
+
         glfwSetWindowSizeCallback(m_pWindow, 
             [](GLFWwindow* pWindow, int width, int height)
             {
@@ -134,4 +159,11 @@ namespace SimpleEngine {
         glfwPollEvents();
     }
 
+    glm::vec2 Window::get_current_cursor_position() const
+    {
+        double x_pos;
+        double y_pos;
+        glfwGetCursorPos(m_pWindow, &x_pos, &y_pos);
+        return {x_pos, y_pos};
+    }
 }

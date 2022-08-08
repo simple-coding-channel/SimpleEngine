@@ -24,6 +24,13 @@ namespace SimpleEngine {
 
         virtual void on_ui_draw() {}
 
+        virtual void on_mouse_button_event(const MouseButton button_code,
+                                           const double x_pos,
+                                           const double y_pos,
+                                           const bool pressed) {}
+
+        glm::vec2 get_current_cursor_position() const;
+
         float camera_position[3] = { 0.f, 0.f, 1.f };
         float camera_rotation[3] = { 0.f, 0.f, 0.f };
         bool perspective_camera = true;
