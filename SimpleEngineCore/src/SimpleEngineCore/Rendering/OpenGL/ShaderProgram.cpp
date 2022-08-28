@@ -109,8 +109,13 @@ namespace SimpleEngine
         shader_program.m_is_compiled = false;
     }
 
-    void ShaderProgram::setMatrix4(const char* name, const glm::mat4& matrix) const
+    void ShaderProgram::set_matrix4(const char* name, const glm::mat4& matrix) const
     {
         glUniformMatrix4fv(glGetUniformLocation(m_id, name), 1, GL_FALSE, glm::value_ptr(matrix));
+    }
+
+    void ShaderProgram::set_int(const char* name, const int value) const
+    {
+        glUniform1i(glGetUniformLocation(m_id, name), value);
     }
 }

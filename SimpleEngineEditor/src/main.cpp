@@ -123,7 +123,7 @@ int main()
 {
     auto pSimpleEngineEditor = std::make_unique<SimpleEngineEditor>();
 
-    int returnCode = pSimpleEngineEditor->start(1024, 768, "SimpleEngine Editor");
+    int returnCode = pSimpleEngineEditor->start(1024, 1024, "SimpleEngine Editor");
 
     //std::cin.get();
 
