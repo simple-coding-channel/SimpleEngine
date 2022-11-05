@@ -19,6 +19,7 @@ namespace SimpleEngine {
         Application& operator=(Application&&) = delete;
 
         virtual int start(unsigned int window_width, unsigned int window_height, const char* title);
+        void close();
 
         virtual void on_update() {}
 
@@ -33,11 +34,16 @@ namespace SimpleEngine {
 
         float camera_position[3] = { 0.f, 0.f, 1.f };
         float camera_rotation[3] = { 0.f, 0.f, 0.f };
+        float camera_fov = 60.f;
+        float camera_near_plane = 0.1f;
+        float camera_far_plane = 100.f;
         bool perspective_camera = true;
         Camera camera{glm::vec3(-5.f, 0.f, 0.f)};
 
 
     private:
+        void draw();
+
         std::unique_ptr<class Window> m_pWindow;
 
         EventDispatcher m_event_dispatcher;
