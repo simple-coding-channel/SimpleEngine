@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <cstdint>
 
 namespace SimpleEngine {
 
@@ -31,7 +32,7 @@ namespace SimpleEngine {
     {
     public:
         BufferLayout(std::initializer_list<BufferElement> elements)
-            : m_elements(std::move(elements))
+            : m_elements(elements)
         {
             size_t offset = 0;
             m_stride = 0;

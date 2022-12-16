@@ -1,4 +1,5 @@
 #include "SimpleEngineCore/Input.hpp"
+#include <cstdlib>
 
 namespace SimpleEngine {
     bool Input::m_keys_pressed[static_cast<size_t>(KeyCode::KEY_LAST) + 1] = {};

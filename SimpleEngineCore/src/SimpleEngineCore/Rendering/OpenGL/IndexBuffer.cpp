@@ -1,7 +1,4 @@
 #include "IndexBuffer.hpp"
-
-#include "SimpleEngineCore/Log.hpp"
-
 #include <glad/glad.h>
 
 namespace SimpleEngine {
@@ -14,8 +11,6 @@ namespace SimpleEngine {
             case VertexBuffer::EUsage::Dynamic: return GL_DYNAMIC_DRAW;
             case VertexBuffer::EUsage::Stream:  return GL_STREAM_DRAW;
         }
-
-        LOG_ERROR("Unknown VertexBuffer usage");
         return GL_STREAM_DRAW;
     }
 
