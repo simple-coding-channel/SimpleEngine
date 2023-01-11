@@ -114,6 +114,11 @@ namespace SimpleEngine
         glUniformMatrix4fv(glGetUniformLocation(m_id, name), 1, GL_FALSE, glm::value_ptr(matrix));
     }
 
+    void ShaderProgram::set_matrix3(const char* name, const glm::mat3& matrix) const
+    {
+        glUniformMatrix3fv(glGetUniformLocation(m_id, name), 1, GL_FALSE, glm::value_ptr(matrix));
+    }
+
     void ShaderProgram::set_int(const char* name, const int value) const
     {
         glUniform1i(glGetUniformLocation(m_id, name), value);
