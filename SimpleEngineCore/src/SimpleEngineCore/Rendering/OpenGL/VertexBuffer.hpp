@@ -71,8 +71,7 @@ namespace SimpleEngine {
         VertexBuffer& operator=(VertexBuffer&& vertex_buffer) noexcept;
         VertexBuffer(VertexBuffer&& vertex_buffer) noexcept;
 
-        void bind() const;
-        static void unbind();
+        unsigned int get_handle() const { return m_id; }
 
         const BufferLayout& get_layout() const { return m_buffer_layout; }
 
